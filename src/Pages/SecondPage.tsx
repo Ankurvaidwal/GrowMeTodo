@@ -11,7 +11,7 @@ const SecondPage: React.FC = () => {
     useEffect(() => {
         const userData = localStorage.getItem('formData');
         if (!userData) {
-            navigate('/');
+            navigate('/?error=true');
         }
         async function fetchJsonData() {
             try {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Typography, TextField, Button, Alert } from "@mui/material"
 import { useNavigate } from 'react-router-dom';
 import classes from '../styles.module.css'
@@ -9,16 +9,28 @@ const FirstPage: React.FC = () => {
 
     const [form, setform] = useState<User>(intialState);
     const [showAlert, setShowAlert] = useState<boolean>(false);
+    const errorParam = new URLSearchParams(location.search).get('error');
     const navigate = useNavigate();
+
+    // useEffect(() => {
+    //     if (errorParam === 'true') {
+    //         navigate('/');
+    //     }
+    // }, [])
+
+    useEffect(() => {
+        if (errorParam === 'true') {
+            navigate('/');
+            setAlertTimer();
+
+        }
+    }, [errorParam]);
 
     const submitFormHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         console.log(form);
         if (form.Name === '' || form.Phone === '' || form.Email === '') {
-            setShowAlert(true);
-            setTimeout(() => {
-                setShowAlert(false);
-            }, 3000);
+            setAlertTimer();
             return;
         }
         const formJson = JSON.stringify(form);
@@ -32,17 +44,24 @@ const FirstPage: React.FC = () => {
             })
             .catch((error) => {
                 console.error('Error :', error);
-                setShowAlert(true);
-                setTimeout(() => {
-                    setShowAlert(false);
-                }, 3000);
+                setAlertTimer();
             });
     }
-
+    
+    function setAlertTimer() {
+        setShowAlert(true);
+        setTimeout(() => {
+            setShowAlert(false);
+        }, 3000);
+    }
 
     return (
         <div className={classes.container}>
-            {showAlert && <Alert severity="error" >Fill out all the input fields</Alert>}
+            {showAlert &&
+                <Alert severity="error" >
+                    Fill the form First
+                </Alert>
+            }
             <div className={classes.form}>
                 <form autoComplete="off" onSubmit={(event) => { submitFormHandler(event) }}>
                     <Typography variant="h6"></Typography>
