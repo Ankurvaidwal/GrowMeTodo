@@ -16,11 +16,10 @@ const displayJson: React.FC = () => {
             try {
                 const response = await fetch('https://jsonplaceholder.typicode.com/posts');
                 const data = await response.json();
-                // Do something with the data
-                console.log(data);
                 setRows(data);
             } catch (error) {
                 console.error('Error fetching data:', error);
+                setRows([]);
             }
         }
         fetchJsonData();

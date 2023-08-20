@@ -20,7 +20,7 @@ const userForm: React.FC = () => {
             setform({ Name: '', Phone: '', Email: '' });
             setTimeout(() => {
                 setShowAlert(false);
-            }, 3000);
+            }, 900);
             return;
         }
         const formJson = JSON.stringify(form);
@@ -29,24 +29,14 @@ const userForm: React.FC = () => {
 
         setLocalStorageItem('formData', formJson)
             .then(() => {
-                console.log('Value has been set in localStorage.');
+                console.log(`${formJson} updated `);
                 setvalidUser(true);
             })
             .catch((error) => {
-                console.error('Error setting value in localStorage:', error);
+                console.error('Error :', error);
             });
     }
 
-    function setLocalStorageItem(key: string, value: string) {
-        return new Promise<void>((resolve, reject) => {
-            try {
-                localStorage.setItem(key, value);
-                resolve();
-            } catch (error) {
-                reject(error);
-            }
-        });
-    }
 
     useEffect(() => {
         if (validUser) {
@@ -59,12 +49,12 @@ const userForm: React.FC = () => {
         <div className={classes.container}>
             {showAlert && <Alert severity="error" >Fill out all the imput fields</Alert>}
             <div className={classes.form}>
-                <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={(event) => { submitFormHandler(event) }}>
+                <form autoComplete="off" onSubmit={(event) => { submitFormHandler(event) }}>
                     <Typography variant="h6"></Typography>
                     <TextField name="name" variant="outlined" label="Name" fullWidth onChange={(e) => { setform({ ...form, Name: e.target.value }) }} value={form.Name} />
                     <TextField name="phnumber" variant="outlined" label="Phone number" fullWidth onChange={(e) => { setform({ ...form, Phone: e.target.value }) }} value={form.Phone} />
                     <TextField name="email" variant="outlined" label="Email" fullWidth onChange={(e) => { setform({ ...form, Email: e.target.value }) }} value={form.Email} />
-                    <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth >Submit</Button>
+                    <Button className={classes.buttonSubmit} variant="contained" type="submit" fullWidth >Submit</Button>
                 </form>
             </div>
 
@@ -72,4 +62,15 @@ const userForm: React.FC = () => {
     )
 }
 
-export default userForm
+function setLocalStorageItem(key: string, value: string) {
+    return new Promise<void>((resolve, reject) => {
+        try {
+            localStorage.setItem(key, value);
+            resolve();
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+
+export default userForm;

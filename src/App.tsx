@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import UserForm from './Pages/UserForm';
-import DisplayJson from './Pages/DisplayJson';
+import UserForm from './Pages/Home';
+import DisplayJson from './Pages/ApiJsonViewer';
 import Indeterminate from "./components/Indeterminate";
 import Header from './components/Header';
 // import DummyBar from './components/dummyBar';
