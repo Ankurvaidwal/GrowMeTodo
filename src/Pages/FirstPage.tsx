@@ -11,7 +11,7 @@ const FirstPage: React.FC = () => {
     const [showAlert, setShowAlert] = useState<boolean>(false);
     const errorParam = new URLSearchParams(location.search).get('error');
     const navigate = useNavigate();
-    
+
     useEffect(() => {
         if (errorParam === 'true') {
             navigate('/');
@@ -22,7 +22,6 @@ const FirstPage: React.FC = () => {
 
     const submitFormHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(form);
         if (form.Name === '' || form.Phone === '' || form.Email === '') {
             setAlertTimer();
             return;
@@ -33,15 +32,13 @@ const FirstPage: React.FC = () => {
 
         setLocalStorageItem('formData', formJson)
             .then(() => {
-                console.log(`${formJson} updated `);
                 navigate('/display-data');
             })
-            .catch((error) => {
-                console.error('Error :', error);
+            .catch(() => {
                 setAlertTimer();
             });
     }
-    
+
     function setAlertTimer() {
         setShowAlert(true);
         setTimeout(() => {
