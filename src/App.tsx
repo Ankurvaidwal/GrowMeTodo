@@ -1,8 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import UserForm from './Pages/Home';
-import DisplayJson from './Pages/ApiJsonViewer';
-import Indeterminate from "./components/Indeterminate";
+import FirstPage from './Pages/FirstPage';
+import SecondPage from './Pages/SecondPage';
 import Header from './components/Header';
 // import DummyBar from './components/dummyBar';
 
@@ -11,9 +10,8 @@ const App: React.FC = () => {
     <Router>
       <Header />
       <Routes>
-        <Route path='/' Component={UserForm} />
-        <Route path='/display-data' Component={DisplayJson} />
-        <Route path='/nav' Component={Indeterminate} />
+        <Route path='/' Component={FirstPage} />
+        <Route path='/display-data' Component={SecondPage} />
       </Routes>
     </Router>
   )

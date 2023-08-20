@@ -10,7 +10,6 @@ function Indeterminate() {
 
     return (
         <div className={classes.departments}>
-            <span>GrowMeToDo</span>
             <FormGroup sx={{ marginTop: 3 }}>
                 {data.map((dept) => (
                     <SingleDepartment key={dept.department} department={dept.department} sub_departments={dept.sub_departments} />

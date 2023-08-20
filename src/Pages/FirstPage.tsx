@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Typography, TextField, Button, Alert } from "@mui/material"
 import { useNavigate } from 'react-router-dom';
 import classes from '../styles.module.css'
 import User from '../Types/User'
 
 const intialState = { Name: '', Phone: '', Email: '' }
-const userForm: React.FC = () => {
+const FirstPage: React.FC = () => {
 
     const [form, setform] = useState<User>(intialState);
-    const [validUser, setvalidUser] = useState<boolean>(false);
     const [showAlert, setShowAlert] = useState<boolean>(false);
     const navigate = useNavigate();
 
@@ -17,10 +16,9 @@ const userForm: React.FC = () => {
         console.log(form);
         if (form.Name === '' || form.Phone === '' || form.Email === '') {
             setShowAlert(true);
-            setform({ Name: '', Phone: '', Email: '' });
             setTimeout(() => {
                 setShowAlert(false);
-            }, 900);
+            }, 3000);
             return;
         }
         const formJson = JSON.stringify(form);
@@ -30,24 +28,21 @@ const userForm: React.FC = () => {
         setLocalStorageItem('formData', formJson)
             .then(() => {
                 console.log(`${formJson} updated `);
-                setvalidUser(true);
+                navigate('/display-data');
             })
             .catch((error) => {
                 console.error('Error :', error);
+                setShowAlert(true);
+                setTimeout(() => {
+                    setShowAlert(false);
+                }, 3000);
             });
     }
 
 
-    useEffect(() => {
-        if (validUser) {
-            navigate('/display-data');
-        }
-    }, [validUser])
-
-
     return (
         <div className={classes.container}>
-            {showAlert && <Alert severity="error" >Fill out all the imput fields</Alert>}
+            {showAlert && <Alert severity="error" >Fill out all the input fields</Alert>}
             <div className={classes.form}>
                 <form autoComplete="off" onSubmit={(event) => { submitFormHandler(event) }}>
                     <Typography variant="h6"></Typography>
@@ -73,4 +68,4 @@ function setLocalStorageItem(key: string, value: string) {
     });
 }
 
-export default userForm;
+export default FirstPage;

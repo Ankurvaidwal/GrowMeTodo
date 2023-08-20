@@ -1,6 +1,5 @@
 import React from 'react'
 import classes from "../styles.module.css";
-import SideBar from './SideBar';
 import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
@@ -9,7 +8,6 @@ const Header: React.FC = () => {
             <span>
                 <Link to={'/'} style={{ textDecoration: 'none' }}>GrowMeToDo</Link>
             </span>
-            <SideBar />
         </div>
     )
 }
