@@ -11,13 +11,7 @@ const FirstPage: React.FC = () => {
     const [showAlert, setShowAlert] = useState<boolean>(false);
     const errorParam = new URLSearchParams(location.search).get('error');
     const navigate = useNavigate();
-
-    // useEffect(() => {
-    //     if (errorParam === 'true') {
-    //         navigate('/');
-    //     }
-    // }, [])
-
+    
     useEffect(() => {
         if (errorParam === 'true') {
             navigate('/');
