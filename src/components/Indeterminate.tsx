@@ -2,24 +2,9 @@ import { FormGroup } from '@mui/material'
 import Department from '../Model/Department'
 import SingleDepartment from './SingleDepartment';
 import classes from '../styles.module.css'
+import config from "../customJsons/config.json";
 
-const data: Department[] = [
-    {
-        "department": "customer_service",
-        "sub_departments": [
-            "support",
-            "customer_success"
-        ]
-    },
-    {
-        "department": "design",
-        "sub_departments": [
-            "graphic_design",
-            "product_design",
-            "web_design"
-        ]
-    }
-];
+const data: Department[] = config;
 
 function Indeterminate() {
 
