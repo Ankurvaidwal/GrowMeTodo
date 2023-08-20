@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import ApiInfo from '../Model/ApiInfo';
+import ApiInfo from '../Types/ApiInfo';
 
 const displayJson: React.FC = () => {
     const navigate = useNavigate();

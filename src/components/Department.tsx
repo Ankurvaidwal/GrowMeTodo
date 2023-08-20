@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import classes from '../styles.module.css'
 import { Checkbox, FormControlLabel, IconButton } from '@mui/material'
 import { Remove } from '@mui/icons-material'
-import Department from '../Model/Department'
+import Department from '../Types/Department'
 
 const SingleDepartment = ({ department, sub_departments }: Department) => {
     const initialSubItems = sub_departments.reduce((acc, subDept) => {

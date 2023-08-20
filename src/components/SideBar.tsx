@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
-import HorizonatalBar from "./Indeterminate";
+import Indeterminate from "./Indeterminate";
 import DehazeIcon from '@mui/icons-material/Dehaze';
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
@@ -38,7 +38,7 @@ export default function SideBar() {
                     open={state["left"]}
                     onClose={toggleDrawer("left", false)}
                 >
-                    <HorizonatalBar />
+                    <Indeterminate />
                 </Drawer>
             </React.Fragment>
 

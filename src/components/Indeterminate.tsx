@@ -1,6 +1,6 @@
 import { FormGroup } from '@mui/material'
-import Department from '../Model/Department'
-import SingleDepartment from './SingleDepartment';
+import Department from '../Types/Department'
+import SingleDepartment from './Department';
 import classes from '../styles.module.css'
 import config from "../customJsons/config.json";
 

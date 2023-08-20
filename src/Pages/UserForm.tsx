@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Typography, TextField, Button, Alert } from "@mui/material"
 import { useNavigate } from 'react-router-dom';
 import classes from '../styles.module.css'
-import User from '../Model/User'
+import User from '../Types/User'
 
 const intialState = { Name: '', Phone: '', Email: '' }
 const userForm: React.FC = () => {
